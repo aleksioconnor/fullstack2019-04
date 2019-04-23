@@ -11,7 +11,17 @@ app.use(bodyParser.json())
 app.use('/api/blogs', blogsRouter)
 app.use(cors())
 
-mongoose.connect(config.MONGODB_URI , { useNewUrlParser: true })
+app.use((error, request, response, next) => {
+    if (error.name === 'ValidationError') {
+        return response.status(400).json({
+            error: error.message
+        })
+    }
+    next(error);
+});
+
+mongoose.connect(config.MONGODB_URI, {
+    useNewUrlParser: true
+})
 
 module.exports = app
-
