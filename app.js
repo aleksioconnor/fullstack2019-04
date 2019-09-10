@@ -20,6 +20,12 @@ app.use((error, request, response, next) => {
             error: error.message
         })
     }
+
+    if (error.name === 'MongoError') {
+        return response.status(400).json({
+            error: error.message
+        })
+    }
     next(error);
 });
 

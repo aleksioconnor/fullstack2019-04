@@ -2,8 +2,9 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Test-Title-3",
+  "title": "Test-Title-5",
   "author": "Donald Trump",
   "url": "custom-url",
-  "likes": 5
+  "likes": 5,
+  "userId": "5d778a34797e851a61aa16ea"
 }
